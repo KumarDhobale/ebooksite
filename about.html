@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Ebookstore</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="about.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(#fff, #ffd6d6);
+            overflow-x: hidden;
+        }
+
+        /* Header and Navbar */
+        .header {
+            background: radial-gradient(#fff, #ffd6d6);
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo img {
+            width: 125px;
+        }
+
+        nav {
+            flex: 1;
+            text-align: right;
+        }
+
+        nav ul {
+            display: inline-block;
+            list-style-type: none;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a.nav_link {
+            text-decoration: none;
+            color: #555;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a.nav_link:hover {
+            color: #ff523b;
+        }
+
+        nav ul li a.signup-login {
+            color: #ff523b;
+        }
+
+        .cart-link {
+            position: relative;
+            display: inline-block;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 10px;
+            right: -10px;
+            background: #ff523b;
+            color: #fff;
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .menu-icon {
+            width: 28px;
+            margin-left: 20px;
+            display: none;
+            cursor: pointer;
+        }
+
+        /* About Page */
+        .about-page {
+            background: radial-gradient(#fff, #ffd6d6);
+            padding: 50px 0;
+        }
+
+        .title {
+            text-align: center;
+            color: #555;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .about-content {
+            text-align: center;
+            max-width: 700px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff523b;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background: #ff7a68;
+            transform: scale(1.05);
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: #ff523b;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 30px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #ff7a68;
+        }
+
+        .team-section {
+            margin-top: 50px;
+        }
+
+        .team-section h3 {
+            text-align: center;
+            color: #555;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .team {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 10px;
+        }
+
+        .team-member-large {
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            width: 400px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.5s;
+        }
+
+        .team-member-large:hover {
+            transform: scale(1.1);
+        }
+
+        .team-member-large img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .team-member-large h4 {
+            color: #ff523b;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .team-member-large .role {
+            color: #777;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .team-member-large p {
+            color: #555;
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        /* Responsive Styles */
+        @media only screen and (max-width: 800px) {
+            nav ul {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: #333;
+                width: 100%;
+                overflow: hidden;
+                transition: max-height 0.5s;
+            }
+            nav ul li {
+                display: block;
+                margin: 10px 20px;
+            }
+            nav ul li a {
+                color: #fff;
+            }
+            nav ul li a.signup-login {
+                color: #ff523b;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .team-member-large {
+                width: 90%;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
+            .about-content .subtitle {
+                font-size: 16px;
+            }
+            .about-content .btn {
+                width: 100%;
+                padding: 10px 20px;
+            }
+            .back-btn {
+                position: static;
+                margin: 0 auto 20px;
+                display: block;
+                text-align: center;
+            }
+            .team-member-large {
+                width: 100%;
+                padding: 20px;
+            }
+            .team-member-large img {
+                width: 200px;
+                height: 200px;
+            }
+            .team-member-large h4 {
+                font-size: 24px;
+            }
+            .team-member-large p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/EbookStore-Logo.png" alt="EbookStore-Logo">
+                    </a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a class="nav_link" href="index.html">Home</a></li>
+                        <li><a class="nav_link" href="ebooks.php">Ebooks</a></li>
+                        <li><a class="nav_link" href="about.html">About</a></li>
+                        <li><a class="nav_link" href="contact.php">Contact</a></li>
+                        <li><a class="nav_link signup-login" href="signupform.php">Signup/Login</a></li>
+                    </ul>
+                </nav>
+                <a href="cart.html" class="cart-link">
+                    <img src="images/cart.png" alt="Shopping Cart" width="28px" height="28px" style="margin-left: 10px; margin-top: 15px">
+                    <span id="cartCount" class="cart-count">0</span>
+                </a>
+                <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+            </div>
+        </div>
+    </div>
+
+    <div class="about-page">
+        <div class="container">
+            <a href="index.html" class="back-btn"><i class="fa fa-arrow-left"></i> Back</a>
+            <h2 class="title">About Us</h2>
+            <div class="about-content">
+                <p class="subtitle">Book Zone provides an easy interface for customers to purchase books online.</p>
+                <p class="subtitle">For any queries, please reach out via our contact page or call us on weekdays. Thank you for your patience, and we hope you enjoy shopping with us!</p>
+                <a href="contact.php" class="btn">Contact Us</a>
+            </div>
+            <div class="team-section">
+                <h3>Our Team</h3>
+                <div class="team">
+                    <div class="team-member-large">
+                        <img src="images/user.png" alt="Dhobale Kumar">
+                        <h4>Dhobale Kumar</h4>
+                        <p class="role">Support Lead</p>
+                        <p>Name: Mr. Kumar S Dhobale<br>Email: kumardhobale80@gmail.com<br>Contact: 866894****</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px";
+            } else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+
+        // Cart count functionality
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        function updateCartCount() {
+            const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = cartCount;
+        }
+        updateCartCount();
+    </script>
+</body>
+</html>

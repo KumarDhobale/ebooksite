@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart | Ebookstore</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+        body {
+            background: radial-gradient(#fff, #ffd6d6);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        .back-btn{
+            padding: 10px 20px;
+            background: #ff523b;
+            color: #fff;
+            border:none;
+            border-radius: 30px;
+            font-family: 'poppins', sans-serif;
+            font-size: 14px; 
+            cursor: pointer;
+        }
+        .cart-link {
+            position: fixed;
+            top: 30px;
+            right: 150px;
+            display: inline-block;
+            z-index: 1000;
+        }
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ff523b;
+            color: #fff;
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .small-container {
+            max-width: 1080px;
+            margin: auto;
+        }
+        .cart-page {
+            margin: 50px auto;
+        }
+        .cart-page table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .cart-page th {
+            text-align: left;
+            padding: 15px;
+            color: #fff;
+            background: #ff523b;
+            font-weight: 500;
+        }
+        .cart-page td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart-info {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .cart-info img {
+            width: 80px;
+            height: 100px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+        .cart-info p {
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+        }
+        .cart-info small {
+            font-size: 12px;
+            color: #555;
+        }
+        .cart-info a {
+            color: #ff523b;
+            font-size: 12px;
+            text-decoration: none;
+        }
+        .cart-info a:hover {
+            text-decoration: underline;
+        }
+        .quantity-input {
+            width: 60px;
+            padding: 5px;
+            border: 1px solid #ff523b;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .total-price {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+        .total-price table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 400px;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .total-price td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+            color: #333;
+        }
+        .purchase-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .purchase-btn {
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff523b, #ff7a68);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .purchase-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 82, 59, 0.4);
+        }
+        .purchase-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        @media (max-width: 600px) {
+            .cart-page {
+                margin: 40px auto;
+            }
+            .cart-page table {
+                font-size: 14px;
+            }
+            .cart-info img {
+                width: 60px;
+                height: 80px;
+            }
+            .total-price table {
+                max-width: 100%;
+            }
+            .purchase-btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.location.href='index.html'">Back to Home</button>
+    <a href="cart.html" class="cart-link">
+        <img src="images/cart.png" alt="Shopping Cart" width="28px" height="28px"/>
+        <span id="cartCount" class="cart-count">0</span>
+    </a>
+
+    <div class="small-container cart-page">
+        <table id="cartTable">
+            <tr>
+                <th>Ebook</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+        </table>
+        <div class="total-price">
+            <table>
+                <tr>
+                    <td>Subtotal</td>
+                    <td id="subtotal">Rs0.00</td>
+                </tr>
+                <tr>
+                    <td>Tax</td>
+                    <td id="tax">Rs0.00</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td id="total">Rs0.00</td>
+                </tr>
+            </table>
+        </div>
+        <div class="purchase-container">
+            <button class="purchase-btn">Purchase</button>
+        </div>
+    </div>
+
+    <script>
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartTable = document.getElementById('cartTable');
+        const subtotalElement = document.getElementById('subtotal');
+        const taxElement = document.getElementById('tax');
+        const totalElement = document.getElementById('total');
+        const purchaseButton = document.querySelector('.purchase-btn');
+
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function updateCartCount() {
+            const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = cartCount;
+        }
+
+        function updateCartDisplay() {
+            while (cartTable.rows.length > 1) {
+                cartTable.deleteRow(1);
+            }
+
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                const row = cartTable.insertRow();
+                row.innerHTML = `
+                    <td>
+                        <div class="cart-info">
+                            <img src="${item.image}" alt="${item.title}" />
+                            <div>
+                                <p>${item.title}</p>
+                                <small>Price: Rs${item.price.toFixed(2)}</small> <br />
+                                <a href="#" class="remove-item" data-id="${item.id}">Remove</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td><input type="number" value="${item.quantity}" min="1" class="quantity-input" data-id="${item.id}"></td>
+                    <td>Rs${(item.price * item.quantity).toFixed(2)}</td>
+                `;
+                subtotal += item.price * item.quantity;
+            });
+
+            const tax = subtotal * 0.1;
+            const total = subtotal + tax;
+
+            subtotalElement.textContent = `Rs${subtotal.toFixed(2)}`;
+            taxElement.textContent = `Rs${tax.toFixed(2)}`;
+            totalElement.textContent = `Rs${total.toFixed(2)}`;
+
+            purchaseButton.disabled = cart.length === 0;
+        }
+
+        cartTable.addEventListener('change', (e) => {
+            if (e.target.classList.contains('quantity-input')) {
+                const id = e.target.dataset.id;
+                const quantity = parseInt(e.target.value);
+                const item = cart.find(item => item.id === id);
+                if (item && quantity > 0) {
+                    item.quantity = quantity;
+                    saveCart();
+                    updateCartDisplay();
+                    updateCartCount();
+                }
+            }
+        });
+
+        cartTable.addEventListener('click', (e) => {
+            if (e.target.classList.contains('remove-item')) {
+                e.preventDefault();
+                const id = e.target.dataset.id;
+                const index = cart.findIndex(item => item.id === id);
+                if (index !== -1) {
+                    cart.splice(index, 1);
+                    saveCart();
+                    updateCartDisplay();
+                    updateCartCount();
+                }
+            }
+        });
+
+        purchaseButton.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            alert('Purchase successful! Your order has been placed.');
+            cart.length = 0;
+            saveCart();
+            updateCartDisplay();
+            updateCartCount();
+        });
+
+        updateCartDisplay();
+        updateCartCount();
+    </script>
+</body>
+</html>
