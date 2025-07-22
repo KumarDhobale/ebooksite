@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 # Ebookstore
+=======
+# ebooksite
+“E-commerce platform for eBooks with user and admin functionalities.”
+>>>>>>> 6c092135337dd90b474e15e10fc365b734e5d8c9
 
 Ebookstore is a web-based e-commerce platform for purchasing eBooks, featuring user and admin functionalities. Users can browse eBooks, add them to a cart, and make purchases, while admins can manage user data, contact inquiries, and book prices. The project is built with PHP, MySQL, HTML, CSS, and JavaScript, and is designed to run on a WAMP server.
 
@@ -146,4 +151,8 @@ Admin: http://localhost/my project/ebook project/admin_login.php (use admin/admi
 User: http://localhost/my project/ebook project/cart.html or http://localhost/my project/ebook project/index.html
 
 **Contact**:
+<<<<<<< HEAD
 For issues or suggestions, open an issue on GitHub or contact kumardhobale80@gmail.com.
+=======
+For issues or suggestions, open an issue on GitHub or contact kumardhobale80@gmail.com.
+>>>>>>> 6c092135337dd90b474e15e10fc365b734e5d8c9
